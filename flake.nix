@@ -67,12 +67,14 @@
             pkgs.eprover
             pkgs.vampire
             pkgs.spass
+            pkgs.zipperposition
           ];
 
           shellHook = ''
             export NAPROCHE_EPROVER=${lib.getExe' pkgs.eprover "eprover"}
             export NAPROCHE_VAMPIRE=${lib.getExe' pkgs.vampire "vampire"}
             export NAPROCHE_SPASS=${lib.getExe' pkgs.spass "SPASS"}
+            export NAPROCHE_ZIPPER=${lib.getExe pkgs.zipperposition}
             export NAPROCHE_FORMALIZATIONS="$PWD/math"
             # Naproche.cabal is generated from package.yaml (and gitignored).
             [ -f Naproche.cabal ] && [ Naproche.cabal -nt package.yaml ] || hpack --silent
