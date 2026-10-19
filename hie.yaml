@@ -1,0 +1,4 @@
+# Use the Nix-provided GHC and dependencies (via cabal) rather than stack,
+# so haskell-language-server matches the dev shell's compiler exactly.
+cradle:
+  cabal:

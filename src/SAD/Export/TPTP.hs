@@ -118,3 +118,4 @@ exportFormula = exportFormula' 0
     sinfix d o f g  = "(" <> exportFormula' d f <> o <> exportFormula' d g <> ")"
 
     binder d f  = "[" <> exportFormula' (d + 1) (Ind 0 Position.none) <> "] : " <> exportFormula' (d + 1) f
+ 
