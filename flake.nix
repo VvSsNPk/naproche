@@ -62,6 +62,7 @@
             pkgs.ghcid
             pkgs.hlint
             hls
+	    pkgs.stylish-haskell
             pkgs.stack
             # ATPs used by Naproche
             pkgs.eprover
