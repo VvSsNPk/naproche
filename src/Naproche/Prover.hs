@@ -158,6 +158,24 @@ find :: Bytes -> Maybe Prover
 find name = List.find (\prover -> get_name prover == name) list
 
 
+{- zipper position -}
+
+zipperposition :: Prover
+zipperposition =
+  make_prover "zipperposition" "NAPROCHE_ZIPPERPOSITION" zipperposition_command
+    prover_status eprover_messages
+
+zipperposition_command :: Prover_Command
+zipperposition_command = prover_command args prover
+  where
+    Prover{_verbose, _timeout, _memory_limit} = prover
+    args =
+      ["--e-auto true"] ++
+      [if _verbose then "--debug 1" else "-o none"] ++
+      ["--timeout" <> print_seconds _timeout | _timeout > Time.zero] ++
+      ["--mem-limit" <> Value.print_int _memory_limit | _memory_limit > 0]
+
+
 {- eprover -}
 
 eprover :: Prover
